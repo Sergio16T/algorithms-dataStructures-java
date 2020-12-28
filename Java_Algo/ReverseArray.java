@@ -5,7 +5,7 @@ import java.util.Arrays;
 // 1st case even number of values 
 // 0, 1, 2, 3
 // 3, 1, 2, 0
-// 3 2 1 0
+// 3, 2, 1, 0
 
 // second case odd number of values 
 // 0, 1, 2, 3, 4
