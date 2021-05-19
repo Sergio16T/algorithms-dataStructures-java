@@ -7,7 +7,8 @@ public class BinarySearch {
 
     int binarySearchDemo(int arr[], int x){
         // int[] values = {0, 1, 2, 3, 4, 5, 6 };
-        int left = 0, right = arr.length -1;
+        int left = 0,
+            right = arr.length -1;
 
         while(left < right) {
             double mid = (left + right)/2;
