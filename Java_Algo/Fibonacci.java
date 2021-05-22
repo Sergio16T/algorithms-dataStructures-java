@@ -22,7 +22,7 @@ public class Fibonacci {
             } else if (n < 2) {
                 mapping.put(n, n);
             } else {
-                Integer num = recursive(n - 1) + recursive(n -2);
+                Integer num = this.memoization().apply(n - 1) + this.memoization().apply(n -2);
                 mapping.put(n, num);
             }
             return mapping.get(n);
