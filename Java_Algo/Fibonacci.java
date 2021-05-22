@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.function.Function;
 
 public class Fibonacci {
+    private HashMap<Integer, Integer> map = new HashMap<>();
 
     public static Integer recursive(Integer n) {
         if (n < 2) {
@@ -14,18 +15,16 @@ public class Fibonacci {
 
     // Memoization with Higher Order Function
     public Function<Integer, Integer> memoization() {
-        HashMap<Integer, Integer> mapping = new HashMap<>();
-
         return (Integer n) -> {
-            if (mapping.containsKey(n)) {
-                return mapping.get(n);
+            if (map.containsKey(n)) {
+                return map.get(n);
             } else if (n < 2) {
-                mapping.put(n, n);
+                map.put(n, n);
             } else {
                 Integer num = this.memoization().apply(n - 1) + this.memoization().apply(n -2);
-                mapping.put(n, num);
+                map.put(n, num);
             }
-            return mapping.get(n);
+            return map.get(n);
         };
     }
 
@@ -51,8 +50,9 @@ public class Fibonacci {
         Memoization memo = new Memoization();
         Integer memoizedResult = memo.recursive(n);
 
-        Integer result = this.memoization().apply(n);
-        System.out.println("Access method of this class via this: " + result);
+        // Access via HOF example
+        // Integer result = this.memoization().apply(n);
+        // System.out.println("Access method of this class via this: " + result);
 
         return memoizedResult;
     }
@@ -68,13 +68,17 @@ public class Fibonacci {
         // Example initializing Fibonacci and accessing result via public methods of Fibonacci class
         Fibonacci fibo = new Fibonacci();
         Integer result3 = fibo.getMemoizedResult(4);
+        Integer result4 = fibo.getMemoizedResult(6);
         // Example with method that returns a functional interface from which we can invoke apply to apply arguments.
         Integer resultHOF = fibo.memoization().apply(4);
+        Integer resultHOF2 = fibo.memoization().apply(6);
 
         System.out.println(result);
         System.out.println(memoizedResult);
         System.out.println(result3);
+        System.out.println(result4);
         System.out.println(resultHOF);
+        System.out.println(resultHOF2);
     }
 }
 
