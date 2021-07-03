@@ -46,7 +46,7 @@ public class RemoveDuplicates {
 
         for (Integer i = 0; i < arr.length; i++) {
             Integer element = arr[i];
-            if (list.indexOf(element) >= 0) {
+            if (list.indexOf(element) >= 0) { // could also use if (list.contains(element)) { continue; }
                 continue;
             } else {
                 list.add(element);
