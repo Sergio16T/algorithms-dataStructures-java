@@ -16,9 +16,9 @@ public class BinarySearch {
             int midIndex = (int) Math.floor(mid);
             // System.out.println(midIndex);
 
-           if(arr[midIndex] == x) return midIndex;
+           if (arr[midIndex] == x) return midIndex;
 
-           if(arr[midIndex] > x) {
+           if (arr[midIndex] > x) {
                right = midIndex - 1;
            } else {
                left = midIndex + 1;
