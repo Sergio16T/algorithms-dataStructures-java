@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.function.Function;
 
 
 public class RemoveDuplicates {
@@ -23,7 +24,7 @@ public class RemoveDuplicates {
         LinkedHashSet lets us iterate through the elements in the order in which they were inserted. */
         LinkedHashSet<Integer> set = new LinkedHashSet<Integer>();
 
-        for (Integer i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             Integer number = arr[i];
             set.add(number);
         }
@@ -34,7 +35,7 @@ public class RemoveDuplicates {
         // With Hashset underlying data structure is HashTable - Objects are inserted based on their hash code.
         HashSet<Integer> set = new HashSet<Integer>();
 
-        for (Integer i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             Integer number = arr[i];
             set.add(number);
         }
@@ -44,7 +45,7 @@ public class RemoveDuplicates {
     public static Integer[] nativeSolution(Integer[] arr) {
         ArrayList<Integer> list = new ArrayList<Integer>();
 
-        for (Integer i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             Integer element = arr[i];
             if (list.indexOf(element) >= 0) { // could also use if (list.contains(element)) { continue; }
                 continue;
@@ -57,6 +58,9 @@ public class RemoveDuplicates {
     }
     public static void main(String[] args) {
         Integer[] origArray = new Integer[] { 1, 1, 2, 4, 9, 7, 3, 4, 5, 8, 6, 1, 7, 8 };
+        Function<Integer[], Integer[]> deDupUsingStream = RemoveDuplicates::usingStream; // method reference
+        Integer[] dedupedUsingStream = deDupUsingStream.apply(origArray);
+
 
         Integer[] listWithoutDuplicates = RemoveDuplicates.usingStream(origArray);
 
@@ -68,5 +72,6 @@ public class RemoveDuplicates {
         System.out.println("usingLinkedHashSet: " + Arrays.toString(setOfIntegers));
         System.out.println("usingHashSet: " + Arrays.toString(setOfIntegers2));
         System.out.println("using ArrayList: " + Arrays.toString(listWithoutDup));
+        System.out.println("method reference deduped syntax: " + Arrays.toString(dedupedUsingStream));
     }
 }
