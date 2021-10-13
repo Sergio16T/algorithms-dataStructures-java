@@ -46,6 +46,23 @@ public class ReverseListBetween {
         tail.next = currentNode;
         return head;
     }
+
+    public static void main(String[] args) {
+        ReverseListBetween reverseList = new ReverseListBetween();
+
+        ListNode list = new ListNode(7,
+            new ListNode(8,
+                new ListNode(9,
+                    new ListNode(10,
+                        new ListNode(11)
+                    )
+                )
+            )
+        );
+
+        ListNode result = reverseList.reverseBetween(list, 2, 4);
+        System.out.println("result: " + result);
+    }
 }
 
 class ListNode {
@@ -54,4 +71,9 @@ class ListNode {
     ListNode() {}
     ListNode(int val) { this.val = val; }
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    public String toString() {
+        return "ListNode { " + "val: " + this.val + ", " + "next: " + this.next + " }";
+    }
 }
+
